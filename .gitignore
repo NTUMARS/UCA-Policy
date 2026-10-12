@@ -1,0 +1,10 @@
+UCA/data
+third_party/VRL3/vrl3_ckpts
+*.pyc
+__pycache__/
+third_party/VRL3/vrl3_ckpts.zip
+third_party/dexart-release/dexart_assets.zip
+*.pt
+*.pth
+*.ckpt
+/oldsrc

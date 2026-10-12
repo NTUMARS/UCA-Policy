@@ -1,0 +1,29 @@
+# Legacy alias for the original (old-frame) pick dataset.
+# Prefer real_pick_old / real_pick_rebuttal for explicit old vs new runs.
+name: real_pick
+
+task_name: pick
+
+shape_meta: &shape_meta
+  # acceptable types: rgb, low_dim
+  obs:
+    point_cloud:
+      shape: [1024, 3]
+      type: point_cloud
+    agent_pos:
+      shape: [10]
+      type: low_dim
+  action:
+    shape: [10]
+
+env_runner: null
+
+dataset:
+  _target_: uca.dataset.real_ur5.RealDexDataset
+  zarr_path: data/ur5_pick_dataset.zarr
+  horizon: ${horizon}
+  pad_before: ${eval:'${n_obs_steps}-1'}
+  pad_after: ${eval:'${n_action_steps}-1'}
+  seed: 42
+  val_ratio: 0.02
+  max_train_episodes: 90
